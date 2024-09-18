@@ -1,0 +1,10 @@
+table {
+    width: 100%;
+    border-collapse: collapse; /* Ensures borders are collapsed into a single border */
+  }
+  th, td {
+    padding: 10px;
+    text-align: center; /* Optional: align the text in the cells */
+    border-bottom: 1px solid #eee ;
+  }
+  
