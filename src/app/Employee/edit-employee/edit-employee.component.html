@@ -1,0 +1,69 @@
+
+<div class="edit-employee-container">
+    <mat-toolbar color="primary" class="Justify-content-center">Edit Employee</mat-toolbar>
+      <mat-card class="mat-card">
+          
+          <form [formGroup]="editEmployeeForm" (ngSubmit)="onSubmit()">
+              <div class="form-container">
+                <input hidden formControlName="id" value="id">
+                
+              <mat-form-field >
+                  <mat-label> Name</mat-label>
+                  <input matInput formControlName="name" placeholder="Enter Employee Name" >
+                  <mat-error *ngIf="editEmployeeForm.get('name').hasError('required') && editEmployeeForm.get('name').touched ">
+                      Employee Name is required
+                    </mat-error>
+                </mat-form-field>
+                </div>
+                <div class="form-container">
+                <mat-form-field appearance="fill">
+                  <mat-label> Email</mat-label>
+                  <input matInput formControlName="email" placeholder="Enter Employee Email">
+                  <mat-error *ngIf="editEmployeeForm.get('email').hasError('required') && editEmployeeForm.get('email').touched ">
+                      Employee email is required
+                    </mat-error>
+                </mat-form-field>
+                </div>
+                <div class="form-container">
+                  <mat-form-field appearance="fill">
+                    <mat-label> Phone Number</mat-label>
+                    <input matInput formControlName="phoneNumber" placeholder="Enter Employee Phone Number">
+                    <mat-error *ngIf="editEmployeeForm.get('phoneNumber').hasError('required') && editEmployeeForm.get('phoneNumber').touched ">>
+                        Employee Phone Number is required
+                      </mat-error>
+                  </mat-form-field>
+                  </div>
+                  <div class="form-container">
+                      <mat-form-field appearance="fill">
+                        <mat-label> Age</mat-label>
+                        <input matInput formControlName="age" placeholder="Enter Employee Age" type="number">
+                        <mat-error *ngIf="editEmployeeForm.get('age').hasError('required') && editEmployeeForm.get('age').touched ">>
+                            Employee age is required
+                          </mat-error>
+                          <mat-error *ngIf="editEmployeeForm.get('age')?.hasError('min')">Age cannot be less than 18</mat-error>
+  
+                      </mat-form-field>
+                  </div>
+                  <div class="form-container">
+  
+                      <mat-form-field appearance="fill">
+                          <mat-label>Select Department</mat-label>
+                          <mat-select formControlName="departmentId" placeholder="Choose a department">
+                          <mat-option *ngFor="let department of departments" [value]="department.departmentId">
+                              {{ department.departmentId }} - {{ department.name }}
+                          </mat-option>
+                          </mat-select>
+                          <mat-error *ngIf="editEmployeeForm.get('departmentId').hasError('required') && editEmployeeForm.get('departmentId').touched ">>Department is required</mat-error>
+                      </mat-form-field>
+                  </div>
+                <div class="form-container">
+                  <button mat-fab extended color="primary" type="submit" >Submit</button>
+  
+                </div>
+  
+          </form>
+      </mat-card>
+  
+      
+    </div>
+    

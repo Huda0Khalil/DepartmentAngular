@@ -1,0 +1,51 @@
+<div class="table-heading" >
+  <div class="search-container">
+    <span class="pi pi-search search-icon"></span>
+    <input pInputText type="text" class="search-input" placeholder="Search ..." (input)="filterGlobal($event, dt)">
+  
+  </div>
+  <div>
+   <a mat-button  mat-raised-button routerLink="/add-department"><span style="margin: 4px 5px;" class="pi pi-plus"></span> Add Department </a>
+
+  </div>
+
+</div>
+<p-table [value]="departments" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 20]" [tableStyle]="{ 'min-width': '50rem' }"
+[globalFilterFields]="['departmentId', 'name', 'description', 'createdDate']" #dt>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="departmentId">ID  <p-sortIcon field="departmentId"></p-sortIcon></th>
+        <th pSortableColumn="name">Name  <p-sortIcon field="name"></p-sortIcon></th>
+        <th  pSortableColumn="description">Description  <p-sortIcon field="description"></p-sortIcon></th>
+        <th  pSortableColumn="createdDate">Created at  <p-sortIcon field="createdDate"></p-sortIcon></th>
+        <th >Numbers of Employees  </th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-department >
+      <tr >
+        <td>{{ department.departmentId }}</td>
+        <td>{{ department.name }}</td>
+        <td>{{ department.description }}</td>
+        <td>{{ department.createdDate | date: 'dd-MM-yyyy' }}</td>
+        <td>{{ department.employees.length }}</td>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item  color="primary" (click)="onEdit(department.departmentId)">
+            Edit
+          </button>
+          <button mat-menu-item (click)="confirmDelete(department.departmentId)">
+           Delete
+          </button>
+          
+          
+        </mat-menu>
+      </tr>
+    </ng-template>
+    <!-- Paginator template -->
+  <ng-template pTemplate="paginatorleft" let-state>
+    <div>Total Records: {{ state.totalRecords }}</div>
+  </ng-template>
+  </p-table>

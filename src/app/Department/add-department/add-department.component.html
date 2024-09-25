@@ -1,0 +1,35 @@
+
+<div class="add-department-container">
+  <mat-toolbar color="primary" class='Justify-content-center'>Add New Department</mat-toolbar>
+    <mat-card class="mat-card">
+        
+        <form [formGroup]="departmentForm" (ngSubmit)="onSubmit()">
+            <div class="form-container">
+            <mat-form-field >
+                <mat-label>Department Name</mat-label>
+                <input matInput formControlName="name" placeholder="Enter department name" >
+                <mat-error *ngIf="name?.hasError('required')">
+                    Department Name is required
+                  </mat-error>
+              </mat-form-field>
+              </div>
+              <div class="form-container">
+              <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description" placeholder="Enter description"></textarea>
+                <mat-error *ngIf="description?.hasError('required')">
+                    Department Name is required
+                  </mat-error>
+              </mat-form-field>
+              </div>
+              <div class="form-container">
+                <button mat-fab extended color="primary" type="submit" >Submit</button>
+
+              </div>
+
+        </form>
+    </mat-card>
+
+    
+  </div>
+  

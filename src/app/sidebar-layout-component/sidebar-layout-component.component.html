@@ -1,0 +1,23 @@
+
+<mat-sidenav-container class="sidenav-container">
+    <!-- Sidebar content -->
+    <mat-sidenav mode="side" opened class="sidenav">
+      <mat-nav-list class="mat-nav-list">
+        <mat-list-item><a mat-button routerLink="/dashboard">Dashboard</a></mat-list-item>
+        <mat-list-item><a mat-button routerLink="/departments">Departments</a></mat-list-item>
+        <mat-list-item><a mat-button routerLink="/employees">Employees</a></mat-list-item>
+        <mat-list-item><a mat-button routerLink="/settings">Settings</a></mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+  
+    <!-- Main content -->
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+          <span>My Application</span>
+        </mat-toolbar>
+    
+        <div class="content">
+          <router-outlet></router-outlet>
+        </div>
+      </mat-sidenav-content>
+  </mat-sidenav-container>

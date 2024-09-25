@@ -1,0 +1,29 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Adds spacing between form fields */
+    width: 50%;
+    margin: auto;
+    padding: 20px ;
+  }
+  .edit-employee-container{
+    
+    margin: 10px auto;
+    width: 70%;
+    outline: none !important;
+    border-color: #5b005b;
+    box-shadow: 0 0 10px #5b005b;
+  }
+  .mat-card{
+    background-color: #fff;
+  }
+  .Justify-content-center{
+    justify-content: center;
+    background-color: #fff;
+    color: #000;
+  }
+  @media (max-width: 991px){
+    .add-employee-container{
+      min-width: 95%;
+    }
+  }

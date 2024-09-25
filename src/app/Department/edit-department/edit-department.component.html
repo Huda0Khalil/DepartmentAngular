@@ -1,0 +1,47 @@
+
+
+<div class="edit-employee-container">
+    <mat-toolbar color="primary" class='Justify-content-center'>Edit Department</mat-toolbar>
+      <mat-card class="mat-card">
+          
+          <form [formGroup]="editDepartmentForm" (ngSubmit)="onSubmit()">
+              <div class="form-container">
+                <input hidden formControlName="departmentId" value="id">
+               
+
+              <mat-form-field >
+                  <mat-label>Department Name</mat-label>
+                  <input matInput formControlName="name" placeholder="Enter department name" >
+                  <mat-error *ngIf="editDepartmentForm.get('name').hasError('required') && editDepartmentForm.get('name').touched">
+                      Department Name is required
+                    </mat-error>
+                </mat-form-field>
+                </div>
+                
+                <div class="form-container">
+                <mat-form-field appearance="fill">
+                  <mat-label>Description</mat-label>
+                  <textarea matInput formControlName="description" placeholder="Enter description"></textarea>
+                  <mat-error *ngIf="editDepartmentForm.get('description').hasError('required') && editDepartmentForm.get('description').touched">
+                      Department Name is required
+                    </mat-error>
+                </mat-form-field>
+                </div>
+                <div class="form-container">
+                  <mat-form-field appearance="fill" >
+                    <mat-label>Created at</mat-label>
+                    <input matInput formControlName="createdDate" placeholder="" readonly>
+                   
+                  </mat-form-field>
+                  </div>
+                <div class="form-container">
+                  <button mat-fab extended color="primary" type="submit" >Submit</button>
+  
+                </div>
+  
+          </form>
+      </mat-card>
+  
+      
+    </div>
+    

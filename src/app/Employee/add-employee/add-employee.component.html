@@ -1,0 +1,66 @@
+<div class="add-employee-container">
+  <mat-toolbar color="primary" class="Justify-content-center">Add New Employee</mat-toolbar>
+    <mat-card class="mat-card">
+        
+        <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+            <div class="form-container">
+            <mat-form-field >
+                <mat-label> Name</mat-label>
+                <input matInput formControlName="name" placeholder="Enter Employee Name" >
+                <mat-error *ngIf="name?.hasError('required')">
+                    Employee Name is required
+                  </mat-error>
+              </mat-form-field>
+              </div>
+              <div class="form-container">
+              <mat-form-field appearance="fill">
+                <mat-label> Email</mat-label>
+                <input matInput formControlName="email" placeholder="Enter Employee Email">
+                <mat-error *ngIf="email?.hasError('required')">
+                    Employee email is required
+                  </mat-error>
+              </mat-form-field>
+              </div>
+              <div class="form-container">
+                <mat-form-field appearance="fill">
+                  <mat-label> Phone Number</mat-label>
+                  <input matInput formControlName="phoneNumber" placeholder="Enter Employee Phone Number">
+                  <mat-error *ngIf="phoneNumber?.hasError('required')">
+                      Employee Phone Number is required
+                    </mat-error>
+                </mat-form-field>
+                </div>
+                <div class="form-container">
+                    <mat-form-field appearance="fill">
+                      <mat-label> Age</mat-label>
+                      <input matInput formControlName="age" placeholder="Enter Employee Age" type="number">
+                      <mat-error *ngIf="age?.hasError('required')">
+                          Employee age is required
+                        </mat-error>
+                        <mat-error *ngIf="employeeForm.get('age')?.hasError('min')">Age cannot be less than 18</mat-error>
+
+                    </mat-form-field>
+                </div>
+                <div class="form-container">
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Select Department</mat-label>
+                        <mat-select formControlName="departmentId" placeholder="Choose a department">
+                        <mat-option *ngFor="let department of departments" [value]="department.departmentId">
+                            {{ department.departmentId }} - {{ department.name }}
+                        </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="employeeForm.get('departmentId')?.hasError('required')">Department is required</mat-error>
+                    </mat-form-field>
+                </div>
+              <div class="form-container">
+                <button mat-fab extended color="primary" type="submit" >Submit</button>
+
+              </div>
+
+        </form>
+    </mat-card>
+
+    
+  </div>
+  
