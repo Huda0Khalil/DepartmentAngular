@@ -18,11 +18,9 @@
       <tr>
       
 
-        <th pSortableColumn="id">ID  <p-sortIcon field="id"></p-sortIcon></th>
         <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
         <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
         <th pSortableColumn="phoneNumber">Phone Number <p-sortIcon field="phoneNumber"></p-sortIcon></th>
-        <th pSortableColumn="departmentId">Department Id <p-sortIcon field="departmentId"></p-sortIcon></th>
         <th pSortableColumn="department.name">Department Name <p-sortIcon field="id"></p-sortIcon></th>
         <th></th>
         <!-- Add other headers as needed -->
@@ -31,11 +29,9 @@
     </ng-template>
     <ng-template pTemplate="body" let-employee >
       <tr >
-        <td>{{ employee.id }}</td>
         <td>{{ employee.name }}</td>
         <td>{{ employee.email }}</td>
         <td>{{ employee.phoneNumber }}</td>
-        <td>{{ employee.departmentId }}</td>
         <td>{{ employee.department.name}}</td>
         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
           <mat-icon>more_vert</mat-icon>
@@ -44,7 +40,7 @@
           <button mat-menu-item  color="primary" (click)="onEdit(employee.id)">
             Edit
           </button>
-          <button mat-menu-item (click)="confirmDelete(employee.id)">
+          <button mat-menu-item (click)="confirmDelete(employee.id,employee.name)">
            Delete
           </button>
           <!--

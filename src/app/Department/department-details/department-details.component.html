@@ -1,0 +1,36 @@
+<div class="department-details-container">
+    <mat-card class="header-card">
+        <mat-card-header>
+            <mat-card-title>{{ department.name }}</mat-card-title>          
+        </mat-card-header>
+        <mat-card-content>
+            <p><strong>Description:</strong> {{ department.description }}</p>
+            <p><strong>Created At:</strong> {{ department.createdDate | date:'short' }}</p>
+            <p><strong>Number of Employees:</strong> {{ department.employees.length }}</p>
+        </mat-card-content>
+    </mat-card>
+    <div class="employee-list">
+        <h6>Employees in this Department</h6>
+        <table mat-table [dataSource]="department.employees">
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+              <mat-cell *matCellDef="let employee">{{ employee.name }}</mat-cell>
+            </ng-container> 
+           
+            <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+                <mat-cell *matCellDef="let employee">{{ employee.email }}</mat-cell>
+              </ng-container> 
+              <ng-container matColumnDef="phoneNumber">
+                <mat-header-cell *matHeaderCellDef>Phone Number</mat-header-cell>
+                <mat-cell *matCellDef="let employee">{{ employee.phoneNumber }}</mat-cell>
+              </ng-container> 
+              <ng-container matColumnDef="age">
+                <mat-header-cell *matHeaderCellDef>Age</mat-header-cell>
+                <mat-cell *matCellDef="let employee">{{ employee.age }}</mat-cell>
+              </ng-container> 
+            <mat-header-row *matHeaderRowDef="['name','email','phoneNumber','age']"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: ['name','email','phoneNumber','age'];"></mat-row>
+        </table>
+    </div>
+</div>

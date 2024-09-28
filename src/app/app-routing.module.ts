@@ -7,6 +7,7 @@ import { EmployeeListComponent } from './Employee/employee-list/employee-list.co
 import { AddEmployeeComponent } from './Employee/add-employee/add-employee.component';
 import { EditEmployeeComponent } from './Employee/edit-employee/edit-employee.component';
 import { EditDepartmentComponent } from './Department/edit-department/edit-department.component';
+import { DepartmentDetailsComponent } from './Department/department-details/department-details.component';
 
 const appRoutes: Routes = [
   { path: 'departments', component: DapartmentListComponent},
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
   { path: 'add-employee', component: AddEmployeeComponent },
   { path: 'edit-employee/:Id', component: EditEmployeeComponent },
  { path: 'edit-department/:Id', component: EditDepartmentComponent },
+ { path: 'show-department/:Id', component: DepartmentDetailsComponent },
 ];
 
 @NgModule({

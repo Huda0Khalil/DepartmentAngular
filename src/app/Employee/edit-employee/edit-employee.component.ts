@@ -35,8 +35,8 @@ export class EditEmployeeComponent implements OnInit{
       id: [this.employeeId],
       name: ['', Validators.required],
       age: [null, [Validators.required, Validators.min(18)]],
-      email:[null, Validators.required],
-      phoneNumber:[null, Validators.required],
+      email:[null, [Validators.required,Validators.email]],
+      phoneNumber:[null, [Validators.required,Validators.pattern('^[+]?[0-9]{10-13}$')]],
       departmentId: [null, Validators.required]
     });
 

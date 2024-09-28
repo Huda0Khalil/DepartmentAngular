@@ -10,8 +10,8 @@
               <mat-form-field >
                   <mat-label> Name</mat-label>
                   <input matInput formControlName="name" placeholder="Enter Employee Name" >
-                  <mat-error *ngIf="editEmployeeForm.get('name').hasError('required') && editEmployeeForm.get('name').touched ">
-                      Employee Name is required
+                  <mat-error *ngIf="editEmployeeForm?.get('name')?.hasError('required') && editEmployeeForm.get('name').touched ">
+                    Employee Name is required
                     </mat-error>
                 </mat-form-field>
                 </div>
@@ -19,8 +19,9 @@
                 <mat-form-field appearance="fill">
                   <mat-label> Email</mat-label>
                   <input matInput formControlName="email" placeholder="Enter Employee Email">
-                  <mat-error *ngIf="editEmployeeForm.get('email').hasError('required') && editEmployeeForm.get('email').touched ">
-                      Employee email is required
+                  <mat-error *ngIf="editEmployeeForm?.get('email')?.touched ">
+                    <span *ngIf="editEmployeeForm.get('email')?.hasError('required')">Employee email is required</span>  
+                    <span *ngIf="editEmployeeForm.get('email')?.hasError('email')">Please enter a valid email address</span>
                     </mat-error>
                 </mat-form-field>
                 </div>
@@ -28,8 +29,9 @@
                   <mat-form-field appearance="fill">
                     <mat-label> Phone Number</mat-label>
                     <input matInput formControlName="phoneNumber" placeholder="Enter Employee Phone Number">
-                    <mat-error *ngIf="editEmployeeForm.get('phoneNumber').hasError('required') && editEmployeeForm.get('phoneNumber').touched ">>
-                        Employee Phone Number is required
+                    <mat-error *ngIf="editEmployeeForm?.get('phoneNumber')?.touched ">
+                      <span *ngIf="editEmployeeForm?.get('phoneNumber')?.hasError('required')">Employee Phone Number is required</span> 
+                      <span *ngIf="editEmployeeForm?.get('phoneNumber')?.hasError('pattern')">Invalid phone number format</span>
                       </mat-error>
                   </mat-form-field>
                   </div>
@@ -37,10 +39,10 @@
                       <mat-form-field appearance="fill">
                         <mat-label> Age</mat-label>
                         <input matInput formControlName="age" placeholder="Enter Employee Age" type="number">
-                        <mat-error *ngIf="editEmployeeForm.get('age').hasError('required') && editEmployeeForm.get('age').touched ">>
-                            Employee age is required
-                          </mat-error>
-                          <mat-error *ngIf="editEmployeeForm.get('age')?.hasError('min')">Age cannot be less than 18</mat-error>
+                        <mat-error *ngIf="editEmployeeForm?.get('age').touched ">
+                          <span *ngIf="editEmployeeForm?.get('age')?.hasError('required')">Employee age is required</span> 
+                          <span *ngIf="editEmployeeForm?.get('age')?.hasError('min')">Age cannot be less than 18</span>
+                        </mat-error>
   
                       </mat-form-field>
                   </div>
@@ -53,7 +55,7 @@
                               {{ department.departmentId }} - {{ department.name }}
                           </mat-option>
                           </mat-select>
-                          <mat-error *ngIf="editEmployeeForm.get('departmentId').hasError('required') && editEmployeeForm.get('departmentId').touched ">>Department is required</mat-error>
+                          <mat-error *ngIf="editEmployeeForm?.get('departmentId')?.hasError('required') && editEmployeeForm.get('departmentId').touched ">>Department is required</mat-error>
                       </mat-form-field>
                   </div>
                 <div class="form-container">

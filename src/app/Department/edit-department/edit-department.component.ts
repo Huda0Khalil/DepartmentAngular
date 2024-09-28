@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup, Validators } from '@angular/forms';
 import { Department, DepartmentService } from '../department.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DatePipe } from '@angular/common';  
 
 @Component({
   selector: 'app-edit-department',
   templateUrl: './edit-department.component.html',
-  styleUrl: './edit-department.component.css'
+  styleUrl: './edit-department.component.css',
+  providers: [DatePipe]
 })
 export class EditDepartmentComponent implements OnInit {
   editDepartmentForm!: FormGroup;
@@ -20,7 +22,8 @@ createdDate: any;
     private fb: FormBuilder,
     private departmentService: DepartmentService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private datePipe: DatePipe
   ) {}
   ngOnInit(): void {
      // Get department ID from route
@@ -33,16 +36,17 @@ createdDate: any;
       createdDate:[this.createdDate],
       departmentId: [this.departmentId]
     });
-    
+    const rawDate = new Date();  // Replace with your actual date from the backend
+    const formattedDate = this.datePipe.transform(rawDate, 'MMM d, y,h:mm a');  // Example: Aug 26, 2024, 12:00 PM
     this.departmentService.getDepartmentById(this.departmentId).subscribe((department)=>{
       this.editDepartmentForm.patchValue({
         Id:department.departmentId,
-        createdDate:department.createdDate,
+        createdDate:formattedDate,
           name:department.name,
           description :department.description
       });
     });
-    
+   
   }
   onSubmit():void{
     console.log(this.editDepartmentForm);

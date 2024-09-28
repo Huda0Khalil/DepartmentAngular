@@ -30,8 +30,8 @@ filterValue: any;
     // Navigate to the edit-employee page with the employee ID
     this.router.navigate(['/edit-employee', employeeId]);
   }
-  confirmDelete(employeeId:number):void{
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+  confirmDelete(employeeId:number,name:string,type:string='Employee'):void{
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent,{data:{name:name,type:type}});
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
         this.deleteEmployee(employeeId);  // If confirmed, delete the department

@@ -3,11 +3,12 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
-import { MatCard, MatCardModule } from '@angular/material/card';
+import { MatCard,MatCardHeader,MatCardTitle, MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTable, MatTableModule } from '@angular/material/table';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -15,6 +16,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon'
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
+
 
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -33,6 +35,7 @@ import { SidebarLayoutComponent } from './sidebar-layout-component/sidebar-layou
 import { EditEmployeeComponent } from './Employee/edit-employee/edit-employee.component';
 import { EditDepartmentComponent } from './Department/edit-department/edit-department.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { DepartmentDetailsComponent } from './Department/department-details/department-details.component';
 
 /*const routes : Routes = [
   {path: 'departments', component: DapartmentListComponent},
@@ -50,6 +53,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     EditEmployeeComponent,
     EditDepartmentComponent,
     ConfirmationDialogComponent,
+    DepartmentDetailsComponent,
     
     
   ],
@@ -70,7 +74,8 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     FormsModule,
     MatDialogModule,
     ReactiveFormsModule,
-    
+    MatCardHeader,MatCardTitle, MatCardModule ,
+    MatTableModule,
     TableModule,HttpClientModule, 
     AppRoutingModule,
     RouterModule,

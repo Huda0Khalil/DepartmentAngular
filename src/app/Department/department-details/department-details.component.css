@@ -1,0 +1,26 @@
+.department-details-container {
+    padding: 20px;
+  }
+  
+  .mat-card {
+    margin-bottom: 20px;
+    background-color: blue;
+  }
+  .header-card{
+    width: fit-content;
+    margin: auto;
+    background-color: white;
+    color: black;
+  }
+  h6{
+    color: black;
+    text-align: center;
+  }
+  .employee-list {
+    margin-top: 30px;
+  }
+  table{
+   
+   
+    /*background-color: #ffabf3;*/
+  }

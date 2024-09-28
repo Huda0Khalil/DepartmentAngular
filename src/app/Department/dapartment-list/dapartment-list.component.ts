@@ -42,16 +42,24 @@ export class DapartmentListComponent implements OnInit {
       console.error('Department ID is undefined or null.');
     }
   }
-  confirmDelete( departmentId: number): void {
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+  confirmDelete( departmentId: number,name:string,type:string='Department'): void {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: { name:name, type: type }
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
-        this.deleteDepartment(departmentId);  // If confirmed, delete the department
+        this.deleteDepartment(departmentId,name);  // If confirmed, delete the department
       }
     });
   }
-  deleteDepartment(departmentId:number):void{
+  ShowDetails(departmentId:number){
+    if(departmentId){
+      this.router.navigate(['/show-department', departmentId]);
+
+    }
+  }
+  deleteDepartment(departmentId:number, name:string):void{
       this.departmentService.deleteDepartment(departmentId).subscribe(
         ()=>{
           this.departments = this.departments.filter(d => d.departmentId != departmentId);

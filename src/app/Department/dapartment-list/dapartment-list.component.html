@@ -14,7 +14,6 @@
 [globalFilterFields]="['departmentId', 'name', 'description', 'createdDate']" #dt>
     <ng-template pTemplate="header">
       <tr>
-        <th pSortableColumn="departmentId">ID  <p-sortIcon field="departmentId"></p-sortIcon></th>
         <th pSortableColumn="name">Name  <p-sortIcon field="name"></p-sortIcon></th>
         <th  pSortableColumn="description">Description  <p-sortIcon field="description"></p-sortIcon></th>
         <th  pSortableColumn="createdDate">Created at  <p-sortIcon field="createdDate"></p-sortIcon></th>
@@ -23,10 +22,9 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-department >
-      <tr >
-        <td>{{ department.departmentId }}</td>
+      <tr>        
         <td>{{ department.name }}</td>
-        <td>{{ department.description }}</td>
+        <td>{{ department.description | slice:0:40}} ...</td>
         <td>{{ department.createdDate | date: 'dd-MM-yyyy' }}</td>
         <td>{{ department.employees.length }}</td>
         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
@@ -36,7 +34,10 @@
           <button mat-menu-item  color="primary" (click)="onEdit(department.departmentId)">
             Edit
           </button>
-          <button mat-menu-item (click)="confirmDelete(department.departmentId)">
+          <button mat-menu-item (click)="ShowDetails(department.departmentId)">
+            Details
+           </button>
+          <button mat-menu-item (click)="confirmDelete(department.departmentId,department.name)">
            Delete
           </button>
           

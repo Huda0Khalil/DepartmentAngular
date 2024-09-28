@@ -20,7 +20,8 @@ export class DepartmentService {
   
    // GET: Fetch all departments from the API
   getDepartments(): Observable<Department[]> {
-    return this.http.get<Department[]>(`${environment.apiBaseUrl}${environment.departmentApiUrl}`).pipe(
+    
+    return this.http.get<Department[]>(`${environment.apiBaseUrl}${environment.departmentApiUrl}/GetAllDepartments`).pipe(
       catchError(this.handleError)
     );
   }
@@ -29,7 +30,7 @@ export class DepartmentService {
     return this.http.post<Department>(`${environment.apiBaseUrl}${environment.departmentApiUrl}`,department);
    }
    getDepartmentById(Id: number): Observable<Department> {
-    return this.http.get<Department>(`${environment.apiBaseUrl}${environment.departmentApiUrl}/GetDepartmentById`,{params:{Id: Id}});
+    return this.http.get<Department>(`${environment.apiBaseUrl}${environment.departmentApiUrl}/GetDepartmentById?Id=${Id}`);
   
   }
   updateDepartment(id:number, departmentData:Department ):Observable<any>{
