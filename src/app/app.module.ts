@@ -36,7 +36,9 @@ import { EditEmployeeComponent } from './Employee/edit-employee/edit-employee.co
 import { EditDepartmentComponent } from './Department/edit-department/edit-department.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { DepartmentDetailsComponent } from './Department/department-details/department-details.component';
-
+import { LoginComponent } from './login/login.component';
+import {  HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth.interceptor';
 /*const routes : Routes = [
   {path: 'departments', component: DapartmentListComponent},
   { path: 'add-department', component: AddDepartmentComponent}
@@ -54,6 +56,7 @@ import { DepartmentDetailsComponent } from './Department/department-details/depa
     EditDepartmentComponent,
     ConfirmationDialogComponent,
     DepartmentDetailsComponent,
+    LoginComponent,
     
     
   ],
@@ -82,7 +85,8 @@ import { DepartmentDetailsComponent } from './Department/department-details/depa
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor,multi:true}
   ],
   bootstrap: [AppComponent]
 })

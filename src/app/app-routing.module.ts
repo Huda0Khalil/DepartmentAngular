@@ -8,15 +8,18 @@ import { AddEmployeeComponent } from './Employee/add-employee/add-employee.compo
 import { EditEmployeeComponent } from './Employee/edit-employee/edit-employee.component';
 import { EditDepartmentComponent } from './Department/edit-department/edit-department.component';
 import { DepartmentDetailsComponent } from './Department/department-details/department-details.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './guards/auth.guard';  // Guard to protect routes
 
 const appRoutes: Routes = [
-  { path: 'departments', component: DapartmentListComponent},
-  { path: 'add-department', component: AddDepartmentComponent },
-  { path: 'employees', component: EmployeeListComponent },
-  { path: 'add-employee', component: AddEmployeeComponent },
-  { path: 'edit-employee/:Id', component: EditEmployeeComponent },
- { path: 'edit-department/:Id', component: EditDepartmentComponent },
- { path: 'show-department/:Id', component: DepartmentDetailsComponent },
+  {path:'logIn', component: LoginComponent},
+  { path: 'departments', component: DapartmentListComponent,canActivate: [AuthGuard]},
+  { path: 'add-department', component: AddDepartmentComponent,canActivate: [AuthGuard] },
+  { path: 'employees', component: EmployeeListComponent ,canActivate: [AuthGuard]},
+  { path: 'add-employee', component: AddEmployeeComponent ,canActivate: [AuthGuard]},
+  { path: 'edit-employee/:Id', component: EditEmployeeComponent ,canActivate: [AuthGuard] },
+ { path: 'edit-department/:Id', component: EditDepartmentComponent,canActivate: [AuthGuard] },
+ { path: 'show-department/:Id', component: DepartmentDetailsComponent,canActivate: [AuthGuard] },
 ];
 
 @NgModule({

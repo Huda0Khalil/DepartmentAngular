@@ -2,7 +2,7 @@
 .form-container {
     display: flex;
     flex-direction: column;
-    gap: 16px; /* Adds spacing between form fields */
+    gap: 16px;
     width: 50%;
     margin: auto;
     padding: 20px ;
